@@ -5,16 +5,13 @@ export default defineConfig(() => {
   return {
     boot: ['pinia'],
 
-    css: [
-      'app.scss'
-    ],
+    css: ['app.scss'],
 
-    extras: [
-      'roboto-font',
-      'material-icons',
-    ],
+    extras: ['roboto-font', 'material-icons'],
 
     build: {
+      publicPath: '/co-study-space/',
+
       alias: {
         src: resolve(process.cwd(), 'src'),
         pages: resolve(process.cwd(), 'src/pages'),
@@ -22,69 +19,68 @@ export default defineConfig(() => {
         components: resolve(process.cwd(), 'src/components'),
       },
 
-      target: {
-      },
+      target: {},
 
       vueRouterMode: 'hash',
 
       vitePlugins: [
-        ['vite-plugin-checker', {
-          eslint: {
-            lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
-            useFlatConfig: true
-          }
-        }, { server: false }]
-      ]
+        [
+          'vite-plugin-checker',
+          {
+            eslint: {
+              lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
+              useFlatConfig: true,
+            },
+          },
+          { server: false },
+        ],
+      ],
     },
 
     devServer: {
-      open: true
+      open: true,
     },
 
     framework: {
       config: {},
 
-      plugins: ['Notify']
+      plugins: ['Notify'],
     },
 
     animations: [],
 
     ssr: {
       prodPort: 3000,
-      middlewares: [
-        "render"
-      ],
+      middlewares: ['render'],
     },
 
-    ssg: {
-    },
+    ssg: {},
 
     pwa: {
-      workboxMode: 'GenerateSW'
+      workboxMode: 'GenerateSW',
     },
 
     cordova: {},
 
     capacitor: {
-      hideSplashscreen: true
+      hideSplashscreen: true,
     },
 
     electron: {
-      preloadScripts: [ 'electron-preload' ],
+      preloadScripts: ['electron-preload'],
       inspectPort: 5858,
 
       bundler: 'packager',
 
-      packager: {
-      },
+      packager: {},
 
       builder: {
-        appId: 'co-study-space'
-      }
+        appId: 'co-study-space',
+      },
     },
 
     bex: {
-      extraScripts: []
-    }
+      extraScripts: [],
+    },
   }
 })
